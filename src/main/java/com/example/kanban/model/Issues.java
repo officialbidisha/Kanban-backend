@@ -25,7 +25,7 @@ public class Issues {
 	private String projectname;
 	private String type;
 	private String assignee;
-	private String title;
+	public String title;
 	private String summary;
 	private String status;
 	private int storypoint;

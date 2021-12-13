@@ -1,5 +1,6 @@
 package com.example.kanban.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +40,25 @@ public class IssuesController {
 	@RequestMapping(value = "/", method= RequestMethod.GET)
 	public List<Issues> getAllIssues(){
 		return issueRepository.findAll();
+	}
+	
+	@CrossOrigin(origins="*")
+	@RequestMapping(value = "/startsWith", method= RequestMethod.GET)
+	public List<Issues> getAllIssuesStartingWith(@RequestParam("data") String itemid){
+		List<Issues> list=  issueRepository.findAll();
+		if(itemid == "") {
+			System.out.println(list);
+			return list;
+		}
+		List<Issues> finalList = new ArrayList<>() ;
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).title.startsWith(itemid) ) {
+				finalList.add(list.get(i));
+			}
+		}
+		
+		return finalList;
+		
 	}
 	
 	@CrossOrigin(origins="*")
