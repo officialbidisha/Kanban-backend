@@ -9,7 +9,7 @@ public class Members {
 
 	@Id
 	private ObjectId id;
-	private String name;
+	public String name;
 	private String[] projects;
 
 	public Members(ObjectId id, String name, String[] projects) {
