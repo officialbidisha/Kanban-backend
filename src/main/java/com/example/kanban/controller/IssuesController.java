@@ -51,7 +51,7 @@ public class IssuesController {
 		}
 		List<Issues> finalList = new ArrayList<>() ;
 		for(int i=0;i<list.size();i++) {
-			if(list.get(i).title.startsWith(itemid) ) {
+			if(list.get(i).title.toLowerCase().contains(itemid.toLowerCase()) ) {
 				finalList.add(list.get(i));
 			}
 		}
