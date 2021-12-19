@@ -79,8 +79,17 @@ public class IssuesController {
 		}
 	}
 
+	@CrossOrigin(origins="*")
 	@RequestMapping(value="/{id}",method = RequestMethod.DELETE)
-	public void deleteBook(@PathVariable("id") ObjectId _id) {
-		issueRepository.deleteById(_id);
+	public HttpStatus deleteIssue(@PathVariable("id") ObjectId _id) {
+		try {
+			
+			issueRepository.deleteById(_id);
+			return HttpStatus.ACCEPTED;
+		}
+		catch(Exception e) {
+			return HttpStatus.BAD_REQUEST;
+		}
+
 	}
 }

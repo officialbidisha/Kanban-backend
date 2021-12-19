@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Issues {
 
 	public Issues(ObjectId id, String projectname, String type, String assignee, String title, String summary,
-			String status, int storypoint) {
+			String status, int storypoint, String priority, String description) {
 		super();
 		this.id = id;
 		this.projectname = projectname;
@@ -18,6 +18,8 @@ public class Issues {
 		this.summary = summary;
 		this.status = status;
 		this.storypoint = storypoint;
+		this.priority = priority;
+		this.description = description;
 	}
 
 	@Id
@@ -29,6 +31,16 @@ public class Issues {
 	private String summary;
 	private String status;
 	private int storypoint;
+	private String priority;
+	private String description;
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
 
 	public String getId() {
 		return id.toHexString();
@@ -92,6 +104,14 @@ public class Issues {
 
 	public void setStorypoint(int storypoint) {
 		this.storypoint = storypoint;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
