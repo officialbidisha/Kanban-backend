@@ -28,8 +28,11 @@ public class IssuesController {
 	
 	
 	//Create Operation
+	@CrossOrigin(origins="*")
 	@RequestMapping(value= "/new", method= RequestMethod.POST)
 	public Issues create(@Validated @RequestBody Issues Issue) {
+		System.out.println("Creating....");
+		System.out.println(Issue);
 		Issue.setId(ObjectId.get());
 		issueRepository.save(Issue);
 		return Issue;
