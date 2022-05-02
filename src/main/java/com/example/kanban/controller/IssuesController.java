@@ -26,7 +26,7 @@ public class IssuesController {
 	@Autowired
 	private IssueRepository issueRepository;
 	
-	
+	//
 	//Create Operation
 	@CrossOrigin(origins="*")
 	@RequestMapping(value= "/new", method= RequestMethod.POST)
