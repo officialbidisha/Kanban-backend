@@ -8,12 +8,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
+@Controller
 @SpringBootApplication 
 (exclude={SecurityAutoConfiguration.class})
 public class KanbanApplication implements CommandLineRunner{
 
 	@Autowired
 	private ProjectRepository projectRepository;
+
+    @RequestMapping("/")
+    @ResponseBody
+    String home() {
+      return "Hello World!";
+    }
+
 
 
 	public static void main(String[] args) {
